@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Dias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+    <main class="flex-grow p-8 flex flex-col items-center">
+        <!-- Main Title -->
+        <h1 class="text-4xl font-bold mb-8">Calculadora de Dias</h1>
+
+        <!-- Tabs -->
+        <div class="flex space-x-4 mb-6">
+            <button onclick="showTab('contar')" class="tab-button bg-blue-600 text-white px-6 py-3 text-lg rounded"
+                data-tab="contar">
+                Contar Dias
+            </button>
+
+            <button onclick="showTab('adicionar')"
+                class="tab-button bg-gray-300 text-gray-800 px-6 py-3 text-lg rounded" data-tab="adicionar">
+                Somar/Subtrair Dias
+            </button>
+        </div>
+
+
+        <!-- Tab Contents -->
+        <div class="w-full max-w-md">
+
+            <!-- Contar Dias Tab -->
+            <div id="tab-contar" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-4 text-center">Contar Dias</h2>
+
+                <div onclick="document.getElementById('start').showPicker()"
+                    class="bg-white border border-gray-300 p-4 rounded w-full mb-4 cursor-pointer hover:border-blue-500">
+                    <label for="start" class="block mb-1 text-ml text-gray-700">Data inicial:</label>
+                    <input type="date" id="start" class="w-full bg-white text-gray-800 outline-none"
+                        onfocus="this.showPicker()" />
+                </div>
+
+                <div onclick="document.getElementById('end').showPicker()"
+                    class="bg-white border border-gray-300 p-4 rounded w-full mb-4 cursor-pointer hover:border-blue-500">
+                    <label for="end" class="block mb-1 text-ml text-gray-700">Data final:</label>
+                    <input type="date" id="end" class="w-full bg-white text-gray-800 outline-none"
+                        onfocus="this.showPicker()" />
+                </div>
+
+                <div class="mb-4 flex items-center gap-2">
+                    <input type="checkbox" id="weekdaysOnly"
+                        class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                    <label for="weekdaysOnly" class="text-ml text-gray-700">Contar apenas dias úteis</label>
+                </div>
+
+
+                <button onclick="calculate()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
+                    Calcular
+                </button>
+
+                <p id="result" class="mt-6 text-2xl font-semibold text-center"></p>
+                <div id="explanation"
+                    class="mt-4 text-ml text-gray-500 bg-gray-100 border-l-4 border-blue-400 p-4 rounded shadow-sm hidden">
+                </div>
+
+
+
+            </div>
+
+            <!-- Adicionar Dias Tab -->
+            <div id="tab-adicionar" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold text-center mb-4">Somar/Subtrair Dias</h2>
+
+                <!-- Date input -->
+                <div onclick="document.getElementById('add-start').showPicker()"
+                    class="bg-white border border-gray-300 p-4 rounded w-full mb-4 cursor-pointer hover:border-blue-500">
+                    <label for="add-start" class="block mb-1 text-ml text-gray-700">Data inicial:</label>
+                    <input type="date" id="add-start" class="w-full bg-white text-gray-800 outline-none"
+                        onfocus="this.showPicker()" />
+                </div>
+
+                <!-- Number input -->
+                <div class="mb-4">
+                    <label for="daysToAdd" class="block mb-1 text-ml text-gray-700">Quantidade de dias:</label>
+                    <input type="number" id="daysToAdd" class="w-full border border-gray-300 rounded p-2" min="1"
+                        placeholder="Digite aqui a quantidade" />
+                </div>
+
+
+                <!-- Operation select -->
+                <div class="mb-4">
+                    <label for="operation" class="block mb-1 text-ml text-gray-700">Operação:</label>
+                    <select id="operation" class="w-full border border-gray-300 rounded p-2">
+                        <option value="add">Somar</option>
+                        <option value="subtract">Subtrair</option>
+                    </select>
+                </div>
+
+                <!-- Weekdays-only checkbox -->
+                <div class="mb-4 flex items-center gap-2">
+                    <input type="checkbox" id="weekdaysOnlyAdd"
+                        class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                    <label for="weekdaysOnlyAdd" class="text-ml text-gray-700">Considerar apenas dias úteis</label>
+                </div>
+
+                <!-- Button -->
+                <button onclick="calculateNewDate()"
+                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
+                    Calcular nova data
+                </button>
+
+                <!-- Result -->
+                <p id="add-result" class="mt-6 text-2xl font-semibold text-center"></p>
+            </div>
+
+
+        </div>
+    </main>
+</body>
+
+<footer class="bg-white text-gray-700 w-full mt-12 border-t border-gray-300">
+    <div
+        class="max-w-md mx-auto px-4 py-6 flex flex-col sm:flex-row justify-center items-center gap-y-4 sm:gap-y-0 sm:gap-x-8 text-center">
+
+        <a href="index.html" class="text-sm hover:text-blue-600 transition-colors">Calculadora</a>
+        <a href="disclaimer.html" class="text-sm hover:text-blue-600 transition-colors">Disclaimer</a>
+        <a href="transparencia.html" class="text-sm hover:text-blue-600 transition-colors">Transparência</a>
+        <a href="privacidade.html" class="text-sm hover:text-blue-600 transition-colors">Privacidade</a>
+        <a href="contato.html" class="text-sm hover:text-blue-600 transition-colors">Contato</a>
+
+    </div>
+</footer>
+
+
+
+</html>
