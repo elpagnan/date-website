@@ -15,11 +15,7 @@
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
     <main class="flex-grow p-8 flex flex-col items-center">
         <!-- Título e descrição -->
-        <h1 class="text-4xl font-bold mb-2 text-center">Calculadora de Datas</h1>
-        <p class="text-base text-gray-600 max-w-md text-justify mb-8 leading-relaxed">
-            Ferramenta gratuita para calcular facilmente a quantidade de dias entre datas ou adicionar/subtrair dias
-            úteis. Ideal para quem precisa planejar prazos, compromissos e eventos com agilidade.
-        </p>
+        <h1 class="text-4xl font-bold mb-5 text-center">Calculadora de Datas</h1>
 
         <!-- Tabs -->
         <div class="flex space-x-4 mb-6">
@@ -122,16 +118,41 @@
                 <p id="add-result" class="mt-6 text-2xl font-semibold text-center"></p>
             </div>
 
-
         </div>
+
+        <section class="w-full max-w-4xl px-6 py-2 bg-white rounded-2xl shadow-md mt-6 mx-auto">
+            <h2 class="text-2xl font-bold mb-4 text-center text-blue-700">
+                Como usar a Calculadora de Datas
+            </h2>
+
+            <ul class="space-y-5 text-gray-700 leading-relaxed">
+                <li>
+                    Use a calculadora para contar dias úteis entre duas datas ou somar/subtrair dias úteis a partir de
+                    uma data inicial.
+                </li>
+
+                <li>
+                    Por exemplo, se você quer saber quantos dias úteis faltam para o fim de um prazo, basta inserir a
+                    data de início e a data de término. Se quiser saber que dia cairá daqui a 15 dias úteis, use a aba
+                    "Somar/Subtrair Dias".
+                </li>
+
+                <li>
+                    <b>Atenção:</b> a caixa "Contar apenas dias úteis" não leva em consideração feriados. Ou seja, se
+                    houver um feriado no período, ele será considerado como dia útil.
+                </li>
+            </ul>
+        </section>
+
     </main>
 </body>
 
-<footer class="bg-white text-gray-700 w-full mt-12 border-t border-gray-300">
+<footer class="bg-white text-gray-700 w-full mt-6 border-t border-gray-300">
     <div
         class="max-w-md mx-auto px-4 py-6 flex flex-col sm:flex-row justify-center items-center gap-y-4 sm:gap-y-0 sm:gap-x-8 text-center">
 
         <a href="/" class="text-sm hover:text-blue-600 transition-colors">Calculadora</a>
+        <a href="examples.html" class="text-sm hover:text-blue-600 transition-colors">Exemplos</a>
         <a href="disclaimer.html" class="text-sm hover:text-blue-600 transition-colors">Disclaimer</a>
         <a href="transparencia.html" class="text-sm hover:text-blue-600 transition-colors">Transparência</a>
         <a href="privacidade.html" class="text-sm hover:text-blue-600 transition-colors">Privacidade</a>
@@ -139,7 +160,5 @@
 
     </div>
 </footer>
-
-
 
 </html>
